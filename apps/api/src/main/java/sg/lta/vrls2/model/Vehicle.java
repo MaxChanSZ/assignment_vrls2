@@ -1,17 +1,69 @@
 package sg.lta.vrls2.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public record Vehicle(
-        String uuid,
-        String status,
-        LocalDate startDate,
-        LocalDate endDate,
-        LocalTime time,
-        String userUuid,
-        String brand,
-        String type,
-        String category
-) {
+@Entity
+@Table(name = "vehicle")
+public class Vehicle {
+
+        public enum RegistrationStatus {
+                REGISTERED,
+                DEREGISTERED
+        }
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+
+        @Column(name = "uuid")
+        private String uuid;
+
+        @Enumerated(EnumType.STRING)
+        @Column(name = "registration_status")
+        private RegistrationStatus registrationStatus;
+
+        @Column(name = "brand")
+        private String brand;
+
+        @Column(name = "type")
+        private String type;
+
+        public Long getId() {
+                return id;
+        }
+
+        public String getUuid() {
+                return uuid;
+        }
+
+        public void setUuid(String uuid) {
+                this.uuid = uuid;
+        }
+
+        public String getBrand() {
+                return brand;
+        }
+
+        public void setBrand(String brand) {
+                this.brand = brand;
+        }
+
+        public String getType() {
+                return type;
+        }
+
+        public void setType(String type) {
+                this.type = type;
+        }
+
+        public RegistrationStatus getRegistrationStatus() {
+                return registrationStatus;
+        }
+
+        public void setRegistrationStatus(RegistrationStatus registrationStatus) {
+                this.registrationStatus = registrationStatus;
+        }
 }
