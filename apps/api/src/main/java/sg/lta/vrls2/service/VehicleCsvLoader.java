@@ -65,8 +65,14 @@ public class VehicleCsvLoader {
                     currentVehicle.setUuid(row[0]);
                     currentVehicle.setBrand(row[6]);
                     currentVehicle.setType(row[7]);
+                    currentVehicle.setStartDate(parseDate(row[2]));
+                    currentVehicle.setEndDate(parseDate(row[3]));
                     currentVehicle.setRegistrationStatus(Vehicle.RegistrationStatus.valueOf(row[1]));
                     vehicleRepository.save(currentVehicle);
+                } else if (currentVehicle.getEndDate().isBefore(parseDate(row[2]))) {
+                    currentVehicle.setStartDate(parseDate(row[2]));
+                    currentVehicle.setEndDate(parseDate(row[3]));
+                    currentVehicle.setRegistrationStatus(Vehicle.RegistrationStatus.valueOf(row[1]));
                 }
 
                 VehicleUser currentVehicleUser = vehicleUserRepository.getByUuid(row[5]);

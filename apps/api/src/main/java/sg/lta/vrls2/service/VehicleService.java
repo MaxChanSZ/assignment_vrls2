@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import sg.lta.vrls2.model.Vehicle;
+import sg.lta.vrls2.repo.VehicleRepository;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +16,6 @@ import java.util.Optional;
 public class VehicleService {
 
     private final VehicleCsvLoader loader;
-    private List<Vehicle> vehicles = Collections.emptyList();
 
     @Value("${data.directory}")
     private String dataDir;
@@ -26,17 +25,20 @@ public class VehicleService {
         this.loader = loader;
     }
 
+    @Autowired
+    public VehicleRepository vehicleRepository;
+
     @PostConstruct
     public void init() throws Exception {
         Path path = Paths.get(dataDir).toAbsolutePath().normalize();
-        this.vehicles = loader.loadAll(path);
+        loader.loadAll(path);
     }
 
     public List<Vehicle> all() {
-        return vehicles;
+        return vehicleRepository.findAll();
     }
 
     public Optional<Vehicle> findByUuid(String uuid) {
-        return null; //TODO
+        return vehicleRepository.findByUuid(uuid);
     }
 }
