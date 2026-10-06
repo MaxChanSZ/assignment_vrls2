@@ -1,6 +1,7 @@
 package sg.lta.vrls2.service;
 
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import sg.lta.vrls2.model.Vehicle;
@@ -17,9 +18,10 @@ public class VehicleService {
     private final VehicleCsvLoader loader;
     private List<Vehicle> vehicles = Collections.emptyList();
 
-    @Value("${vrls.data-dir:../../data}")
+    @Value("${data.directory}")
     private String dataDir;
 
+    @Autowired
     public VehicleService(VehicleCsvLoader loader) {
         this.loader = loader;
     }
@@ -35,6 +37,6 @@ public class VehicleService {
     }
 
     public Optional<Vehicle> findByUuid(String uuid) {
-        return vehicles.stream().filter(v -> v.uuid().equals(uuid)).findFirst();
+        return null; //TODO
     }
 }

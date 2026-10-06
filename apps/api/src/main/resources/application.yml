@@ -7,6 +7,21 @@ spring:
   jackson:
     serialization:
       write-dates-as-timestamps: false
+  datasource:
+    url: "jdbc:sqlserver://;serverName=localhost;databaseName=master;encrypt=true;trustServerCertificate=true;"
+    username: "application"
+    password: "password"
+  batch:
+    jdbc:
+      initialize-schema: always
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+
+data:
+  directory: "C:/Users/maxim/IdeaProjects/LTA/starter/data"
+
 
 vrls:
   data-dir: ../../data
