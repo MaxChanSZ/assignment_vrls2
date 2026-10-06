@@ -24,6 +24,7 @@
         <th>Type</th>
         <th>Status</th>
         <th>Start Date</th>
+        <th>End Date</th>
         <th>Category</th>
       </tr>
     </thead>
@@ -32,9 +33,9 @@
         <td>{{ v.uuid.substring(0, 8) }}</td>
         <td>{{ v.brand }}</td>
         <td>{{ v.type }}</td>
-        <td>{{ v.status }}</td>
+        <td>{{ v.registrationStatus }}</td>
         <td>{{ v.startDate }}</td>
-        <td>{{ v.category }}</td>
+        <td>{{ v.endDate }}</td>
       </tr>
     </tbody>
   </table>

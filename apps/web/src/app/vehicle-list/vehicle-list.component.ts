@@ -43,7 +43,7 @@ export class VehicleListComponent implements OnInit {
       return this.vehicles;
     }
     return this.vehicles.filter((v) =>
-      this.selectedStatuses.every((s) => v.status === s),
+      this.selectedStatuses.every((s) => v.registrationStatus === s),
     );
   }
 
