@@ -14,6 +14,20 @@
     >
       Deregistered
     </button>
+    <button
+    type="button"
+    [class.active]="selectedCategories.includes('PERSONAL')"
+    (click)="toggleCategories('PERSONAL')"
+    >
+      Personal
+    </button>
+    <button
+    type="button"
+    [class.active]="selectedCategories.includes('COMMERCIAL')"
+    (click)="toggleCategories('COMMERCIAL')"
+    >
+      Commercial
+      </button>
   </div>
 
   <table>
@@ -36,6 +50,7 @@
         <td>{{ v.registrationStatus }}</td>
         <td>{{ v.startDate }}</td>
         <td>{{ v.endDate }}</td>
+        <td>{{ v.recordCategory }}</td>
       </tr>
     </tbody>
   </table>

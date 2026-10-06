@@ -14,6 +14,7 @@ import { VehicleDetailComponent } from '../vehicle-detail/vehicle-detail.compone
 export class VehicleListComponent implements OnInit {
   vehicles: Vehicle[] = [];
   selectedStatuses: string[] = [];
+  selectedCategories: string[] = [];
   page = 0;
   selected: Vehicle | null = null;
 
@@ -38,12 +39,29 @@ export class VehicleListComponent implements OnInit {
     }
   }
 
+  toggleCategories(category: string): void {
+    const idx = this.selectedCategories.indexOf(category);
+    if (idx >= 0) {
+      this.selectedCategories.splice(idx, 1);
+    } else {
+      this.selectedCategories.push(category);
+    }
+  }
+
   filteredVehicles(): Vehicle[] {
-    if (this.selectedStatuses.length === 0) {
+    if (this.selectedStatuses.length === 0 && this.selectedCategories.length === 0) {
       return this.vehicles;
     }
-    return this.vehicles.filter((v) =>
-      this.selectedStatuses.every((s) => v.registrationStatus === s),
+    return this.vehicles.filter((v) => {
+    const matchesStatus =
+        this.selectedStatuses.length === 0 ||
+        this.selectedStatuses.includes(v.registrationStatus);
+    const matchesCategory =
+        this.selectedCategories.length === 0 ||
+        this.selectedCategories.includes(v.recordCategory);
+    return matchesStatus && matchesCategory;
+    }
+
     );
   }
 
