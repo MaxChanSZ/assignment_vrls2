@@ -9,7 +9,6 @@ import sg.lta.vrls2.repo.VehicleRepository;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +39,6 @@ public class VehicleService {
     }
 
     public Optional<Vehicle> findByUuid(String uuid) {
-        return null; //TODO
+        return vehicleRepository.findByUuid(uuid);
     }
 }
