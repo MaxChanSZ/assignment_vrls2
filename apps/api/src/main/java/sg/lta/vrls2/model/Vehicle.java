@@ -2,6 +2,8 @@ package sg.lta.vrls2.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "vehicle")
 public class Vehicle {
@@ -21,6 +23,12 @@ public class Vehicle {
         @Enumerated(EnumType.STRING)
         @Column(name = "registration_status")
         private RegistrationStatus registrationStatus;
+
+        @Column(name = "registration_start_date")
+        private LocalDate startDate;
+
+        @Column(name = "registration_end_date")
+        private LocalDate endDate;
 
         @Column(name = "brand")
         private String brand;
@@ -62,5 +70,21 @@ public class Vehicle {
 
         public void setRegistrationStatus(RegistrationStatus registrationStatus) {
                 this.registrationStatus = registrationStatus;
+        }
+
+        public LocalDate getStartDate() {
+                return startDate;
+        }
+
+        public void setStartDate(LocalDate startDate) {
+                this.startDate = startDate;
+        }
+
+        public LocalDate getEndDate() {
+                return endDate;
+        }
+
+        public void setEndDate(LocalDate endDate) {
+                this.endDate = endDate;
         }
 }

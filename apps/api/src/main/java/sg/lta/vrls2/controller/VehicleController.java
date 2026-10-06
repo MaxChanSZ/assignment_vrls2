@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
@@ -26,16 +25,10 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
-    @GetMapping
-    public List<Vehicle> list(@RequestParam(defaultValue = "0") int page) {
-        List<Vehicle> all = vehicleService.all();
-        int start = page * PAGE_SIZE;
-        if (start >= all.size()) {
-            return List.of();
-        }
-        int end = start + PAGE_SIZE - 1;
-        int safeEnd = Math.min(end, all.size());
-        return all.subList(start, safeEnd);
+    @GetMapping("/all")
+    public List<Vehicle> list() {
+        //for now, return all vehicles. This won't scale well, but we will build step-by-step.
+        return vehicleService.all();
     }
 
     @GetMapping("/{uuid}")
