@@ -2,8 +2,6 @@ package sg.lta.vrls2.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "vehicle_user")
 public class VehicleUser {
