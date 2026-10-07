@@ -14,6 +14,20 @@
     >
       Deregistered
     </button>
+    <button
+    type="button"
+    [class.active]="selectedCategories.includes('PERSONAL')"
+    (click)="toggleCategories('PERSONAL')"
+    >
+      Personal
+    </button>
+    <button
+    type="button"
+    [class.active]="selectedCategories.includes('COMMERCIAL')"
+    (click)="toggleCategories('COMMERCIAL')"
+    >
+      Commercial
+      </button>
   </div>
 
   <table>
@@ -24,6 +38,7 @@
         <th>Type</th>
         <th>Status</th>
         <th>Start Date</th>
+        <th>End Date</th>
         <th>Category</th>
       </tr>
     </thead>
@@ -32,9 +47,17 @@
         <td>{{ v.uuid.substring(0, 8) }}</td>
         <td>{{ v.brand }}</td>
         <td>{{ v.type }}</td>
-        <td>{{ v.status }}</td>
-        <td>{{ v.startDate }}</td>
-        <td>{{ v.category }}</td>
+        <td><span class="status-badge" [ngClass]="{
+            'badge-registered': v.registrationStatus === 'REGISTERED',
+            'badge-deregistered': v.registrationStatus === 'DEREGISTERED'
+          }">{{ v.registrationStatus }}
+            <strong *ngIf="v.registrationStatus === 'REGISTERED'" class="status-icon">O</strong>
+            <strong *ngIf="v.registrationStatus === 'DEREGISTERED'" class="status-icon">X</strong>
+        </span>
+        </td>
+        <td>{{ v.startDate | date }}</td>
+        <td>{{ v.endDate | date }}</td>
+        <td>{{ v.recordCategory }}</td>
       </tr>
     </tbody>
   </table>

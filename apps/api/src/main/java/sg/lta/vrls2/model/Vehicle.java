@@ -24,6 +24,10 @@ public class Vehicle {
         @Column(name = "registration_status")
         private RegistrationStatus registrationStatus;
 
+        @Enumerated(EnumType.STRING)
+        @Column(name = "vehicle_category")
+        private VehicleRecord.RecordCategory recordCategory;
+
         @Column(name = "registration_start_date")
         private LocalDate startDate;
 
@@ -86,5 +90,13 @@ public class Vehicle {
 
         public void setEndDate(LocalDate endDate) {
                 this.endDate = endDate;
+        }
+
+        public VehicleRecord.RecordCategory getRecordCategory() {
+                return recordCategory;
+        }
+
+        public void setRecordCategory(VehicleRecord.RecordCategory recordCategory) {
+                this.recordCategory = recordCategory;
         }
 }

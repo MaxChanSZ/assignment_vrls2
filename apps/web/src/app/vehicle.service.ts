@@ -5,7 +5,7 @@ import { Vehicle } from './vehicle.model';
 
 @Injectable({ providedIn: 'root' })
 export class VehicleService {
-  private readonly baseUrl = 'http://localhost:8080/api/vehicles';
+  private readonly baseUrl = 'http://localhost:8080/api/vehicles/all';
 
   constructor(private http: HttpClient) {}
 
