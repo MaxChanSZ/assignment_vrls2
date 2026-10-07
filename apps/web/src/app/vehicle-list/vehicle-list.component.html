@@ -48,8 +48,8 @@
         <td>{{ v.brand }}</td>
         <td>{{ v.type }}</td>
         <td>{{ v.registrationStatus }}</td>
-        <td>{{ v.startDate }}</td>
-        <td>{{ v.endDate }}</td>
+        <td>{{ v.startDate | date }}</td>
+        <td>{{ v.endDate | date }}</td>
         <td>{{ v.recordCategory }}</td>
       </tr>
     </tbody>

@@ -15,8 +15,8 @@
             <p><strong>Type:</strong> {{ vehicle.type }}</p>
             <p><strong>Status:</strong> {{ vehicle.registrationStatus }}</p>
             <p><strong>Category:</strong> {{ vehicle.recordCategory }}</p>
-            <p><strong>Registration Start:</strong> {{ vehicle.startDate }}</p>
-            <p><strong>Registration End:</strong> {{ vehicle.endDate }}</p>
+            <p><strong>Registration Start:</strong> {{ vehicle.startDate | date }}</p>
+            <p><strong>Registration End:</strong> {{ vehicle.endDate | date }}</p>
         </div>
         <button class="close-btn" (click)="onCloseClicked()">Close</button>
     </div>

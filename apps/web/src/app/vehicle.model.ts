@@ -3,8 +3,8 @@ export interface Vehicle {
   uuid: string;
   registrationStatus: RegistrationStatus;
   recordCategory: RecordCategory;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   brand: string;
   type: string;
 }

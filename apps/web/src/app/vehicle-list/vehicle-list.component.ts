@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DATE_PIPE_DEFAULT_OPTIONS} from '@angular/common';
 import { VehicleService } from '../vehicle.service';
 import { Vehicle } from '../vehicle.model';
 import { VehicleDetailComponent } from '../vehicle-detail/vehicle-detail.component';
@@ -7,6 +7,9 @@ import { VehicleDetailComponent } from '../vehicle-detail/vehicle-detail.compone
 @Component({
   selector: 'app-vehicle-list',
   standalone: true,
+  providers: [
+    { provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { dateFormat: 'dd MMM yyyy' } }
+  ],
   imports: [CommonModule, VehicleDetailComponent],
   templateUrl: './vehicle-list.component.html',
   styleUrls: ['./vehicle-list.component.css'],
