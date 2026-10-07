@@ -9,8 +9,8 @@ spring:
       write-dates-as-timestamps: false
   datasource:
     url: "jdbc:sqlserver://;serverName=localhost;databaseName=master;encrypt=true;trustServerCertificate=true;"
-    username: "application"
-    password: "password"
+    username: ${APPLICATION_DATASOURCE_USERNAME}
+    password: ${APPLICATION_DATASOURCE_PASSWORD}
   batch:
     jdbc:
       initialize-schema: always
