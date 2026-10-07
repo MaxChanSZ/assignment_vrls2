@@ -47,7 +47,14 @@
         <td>{{ v.uuid.substring(0, 8) }}</td>
         <td>{{ v.brand }}</td>
         <td>{{ v.type }}</td>
-        <td>{{ v.registrationStatus }}</td>
+        <td><span class="status-badge" [ngClass]="{
+            'badge-registered': v.registrationStatus === 'REGISTERED',
+            'badge-deregistered': v.registrationStatus === 'DEREGISTERED'
+          }">{{ v.registrationStatus }}
+            <strong *ngIf="v.registrationStatus === 'REGISTERED'" class="status-icon">O</strong>
+            <strong *ngIf="v.registrationStatus === 'DEREGISTERED'" class="status-icon">X</strong>
+        </span>
+        </td>
         <td>{{ v.startDate | date }}</td>
         <td>{{ v.endDate | date }}</td>
         <td>{{ v.recordCategory }}</td>
